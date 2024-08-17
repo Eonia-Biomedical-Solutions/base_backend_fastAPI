@@ -1,4 +1,4 @@
-# Galenos
+# Eonia Backend Template (FastAPI)
 ## Setting Up
 
 ### Create env
