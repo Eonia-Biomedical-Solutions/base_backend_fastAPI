@@ -1,8 +1,3 @@
-import uuid
-from sqlalchemy import (
-    Column,
-    String
-)
 
 from typing import (
     Any,
@@ -14,7 +9,7 @@ from sqlalchemy.orm import DeclarativeBase
 
 
 __all__ = [
-    'BaseTable'
+    'SQLModel'
 ]
 
 
@@ -36,7 +31,7 @@ class SQLModel(DeclarativeBase):
 
     @classmethod
     def table_name(cls) -> str:
-        """Return name of the table the model refers to."""
+        """Return name of the definitions the model refers to."""
 
         return cls.__tablename__
 
@@ -53,11 +48,3 @@ class SQLModel(DeclarativeBase):
         for key in self.__mapper__.c.keys():
             _dict[key] = getattr(self, key)
         return _dict
-
-
-class BaseTable(SQLModel):
-    __abstract__ = True
-
-    id = Column(name='id',
-                type_=String,
-                primary_key=True,)

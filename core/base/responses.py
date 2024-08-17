@@ -11,9 +11,9 @@ class ResponseStructure(BaseModel):
     data: Any
 
 
-class CustomResponse(JSONResponse):
+class BaseResponse(JSONResponse):
     def __init__(self, content: Any, status_code: int = 200, errors: Dict[str, str] = {},
-                 messages: List[str] = [''],
+                 messages: List[str] = ('',),
                  *args, **kwargs) -> None:
         content = ResponseStructure(status_code=status_code, errors=errors, data=jsonable_encoder(content),
                                     messages=messages).dict()

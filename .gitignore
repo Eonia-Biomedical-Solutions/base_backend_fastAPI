@@ -130,7 +130,7 @@ dmypy.json
 cython_debug/
 
 # Alembic migrations
-core/alembic/versions/*
+alembic/versions/*
 
 # Ignore compiled migrations
 migrations/versions/*_*.py[cod]

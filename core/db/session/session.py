@@ -1,22 +1,14 @@
 from typing import Iterator
 from contextlib import contextmanager
 from sqlalchemy import create_engine
-from sqlalchemy.orm import (
-    Session,
-    sessionmaker,
-)
-from .base import SQLModel
+from sqlalchemy.orm import (Session, sessionmaker)
 
-from core.config import config
+from core.db.definitions import SQLModel
+from core.settings import settings
 
-
-__all__ = [
-    'Base',
-    'create_session'
-]
 
 SessionFactory = sessionmaker(
-    bind=create_engine(config.DB_URL),
+    bind=create_engine(settings.DB_URL),
     autocommit=False,
     autoflush=False,
     expire_on_commit=False
