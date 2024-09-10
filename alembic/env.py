@@ -16,7 +16,7 @@ if config.config_file_name is not None:
 
 target_metadata = Base.metadata
 
-DOTENV = os.path.join('core', ".env")
+DOTENV = os.path.join('core', '.env')
 dotenv.load_dotenv(DOTENV)
 config.set_main_option('sqlalchemy.url', os.getenv("DB_URL"))
 

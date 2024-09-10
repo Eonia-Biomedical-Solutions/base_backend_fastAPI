@@ -28,11 +28,15 @@ DB_USR = <<DB USER>>
 
 SECRET_KEY = <<SECRET KEY>>
 REFRESH_SECRET_KEY = <<REFRESH TOKEN SECRET KEY>>
-ALGORITHM = <<ALGORITHM>>
+ALGORITHM = HS256
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 REFRESH_TOKEN_EXPIRE_MINUTES = 1800
 TIMEOUT = 60
+```
 
+### Generate Secret key
+```shell
+python -c "import os; print(os.urandom(24).hex())"
 ```
 
 ## Setup Alembic
@@ -51,19 +55,14 @@ alembic revision --autogenerate -m "Initial migration"
 alembic upgrade head
 ```
 
-## Run the test
-```shell
-python -m unittest .\app\test\<TEST_NAME>.py
-```
-
 ## Run the Application
 
-### uvicorn (Best Option)
+### uvicorn
 ```shell
 uvicorn app:app --reload
 ```
 
-### Python
+### fastapi
 ```shell
 fastapi dev app
 ```
