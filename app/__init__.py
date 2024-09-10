@@ -4,7 +4,6 @@ from core import (VERSION,
                   OPEN_API_TITLE,
                   OPEN_API_DESCRIPTION)
 from core.settings import settings
-from core.base import BaseResponse
 from core.fastapi import (init_cors,
                           init_routers,
                           init_listeners)

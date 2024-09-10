@@ -128,9 +128,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
-# Alembic migrations
-alembic/versions/*
-
-# Ignore compiled migrations
-migrations/versions/*_*.py[cod]
