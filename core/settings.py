@@ -18,6 +18,15 @@ class Settings(BaseSettings):
     DB_PWD: str
     DB_USR: str
 
+    # mail related
+    MAIL_USERNAME: str
+    MAIL_PASSWORD: str
+    MAIL_PORT: int
+    MAIL_SERVER: str
+    MAIL_STARTTLS: bool
+    MAIL_SSL_TLS: bool
+    MAIL_FROM: str
+
     # JWT Token related
     SECRET_KEY: str
     REFRESH_SECRET_KEY: str
