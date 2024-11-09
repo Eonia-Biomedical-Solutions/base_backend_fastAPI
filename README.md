@@ -1,5 +1,37 @@
 # Eonia Backend Template (FastAPI)
-## Setting Up
+
+## Getting Started
+
+### Clone the Repository
+
+First, clone the repository using the command below:
+
+```bash
+git clone https://azure.devops.safran/SafranEngineeringServices/Innovation%20Team/_git/BaseBackend <YOUR PROJECT>
+```
+
+### Change Git Remote Origin
+
+To set the correct remote origin for your project, use:
+
+```bash
+git remote set-url origin <YOUR GIT PROJECT LINK>
+```
+
+#### Verify the Remote URL:
+
+To verify that you’ve added the correct link:
+
+```bash
+git remote -v
+```
+
+You should see output similar to the following:
+
+```bash
+origin  <YOUR GIT PROJECT LINK> (fetch)
+origin  <YOUR GIT PROJECT LINK> (push)
+```
 
 ### Create env
 ```shell
@@ -75,3 +107,66 @@ uvicorn app:app --reload
 ```shell
 fastapi dev app
 ```
+
+## Project Structure
+
+The following is the project directory structure:
+
+```
+project/
+│
+├───api/
+│   │   __init__.py
+│   └───HelloWorld/
+│       └───v1/
+│           ├───request/
+│           └───response/
+│
+├───app/
+│   │   __init__.py
+│
+├───core/
+│   ├───base/
+│   ├───db/
+│   ├───fastapi/
+│   └───utils/
+│
+├───db_models/
+│   │   __init__.py
+│
+```
+
+### Directory Breakdown
+
+- **api/**: Contains all the API endpoints and versioning.
+  - **HelloWorld/**: Example endpoint for demonstration.
+    - **v1/**: Version 1 of the API.
+      - **request/**: Directory for request validation schemas (e.g., `say_my_name_request.py`).
+      - **response/**: Directory for response models and formats (e.g., `say_my_name_response.py`).
+
+- **app/**: Main application logic and entry point.
+
+- **core/**: Contains essential services, configurations, and utilities.
+  - **settings.py**: Application configuration and environment settings.
+  - **base/**: Base classes such as enums, response models, and schema definitions.
+  - **db/**: Database configurations and helpers.
+    - **crud/**: Helper functions for Create, Read, Update, Delete operations (e.g., `crud.py`).
+    - **table/**: Defines the base database table structure (e.g., `table.py`).
+  - **fastapi/**: FastAPI-specific configurations like CORS settings and custom response handlers.
+  - **utils/**: Utility functions such as token management (`token.py`) and password hashing (`hasher.py`).
+
+- **db_models/**: Contains the definitions for database models.
+
+## Contributions
+
+Contributions are welcome! If you want to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new feature branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+---
