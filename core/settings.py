@@ -5,55 +5,44 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 DOTENV = os.path.join(os.path.dirname(__file__), ".env")
 
 
-class Settings(BaseSettings):
-    # server related
-    ENV: str
+class Config(BaseSettings):
     APP_HOST: str = "localhost"
-    APP_PORT: int = 8080
+    APP_PORT: int = 5000
 
-    # database related
-    DB_URL: str
-    DB_PORT: int
+
+class DevelopmentConfig(Config):
+    ENV: str = 'development'
+    DEBUG: bool = True
+    DB_DRIVER: str = 'sqlite'
+    DB_HOST: str = ''
+    DB_PORT: str = ''
+    DB_NAME: str = 'development.db'
+    DB_PWD: str = ''
+    DB_USR: str = ''
+
+
+class ProductionConfig(Config):
+    ENV: str = 'production'
+    DEBUG: bool = False
+    DB_DRIVER: str
+    DB_HOST: str
+    DB_PORT: str
     DB_NAME: str
     DB_PWD: str
     DB_USR: str
 
-    # mail related
-    MAIL_USERNAME: str
-    MAIL_PASSWORD: str
-    MAIL_PORT: int
-    MAIL_SERVER: str
-    MAIL_STARTTLS: bool
-    MAIL_SSL_TLS: bool
-    MAIL_FROM: str
-
-    # JWT Token related
-    SECRET_KEY: str
-    REFRESH_SECRET_KEY: str
-    ALGORITHM: str
-    TIMEOUT: int
-    ACCESS_TOKEN_EXPIRE_MINUTES: int
-    REFRESH_TOKEN_EXPIRE_MINUTES: int
-
     model_config = SettingsConfigDict(env_file=DOTENV)
 
 
-class DevelopmentConfig(Settings):
-    DEBUG: bool = True
-
-
-class ProductionConfig(Settings):
-    DEBUG: bool = False
-
-
-def get_settings():
+def get_config():
     dotenv.load_dotenv(dotenv_path=DOTENV)
-    env = os.getenv("ENV")
+    env = os.getenv("ENV", 'development')
     config_type = {
         "development": DevelopmentConfig(),
-        "production": ProductionConfig(),
+        # "production": ProductionConfig(),
     }
+
     return config_type[env]
 
 
-settings = get_settings()
+settings = get_config()

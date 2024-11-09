@@ -6,4 +6,4 @@ OPEN_API_TITLE: Final = '<API NAME>'
 
 OPEN_API_DESCRIPTION: Final = '<DESCRIPTION>'
 
-API_PREFIX: Final = '/api'
+API_PREFIX: Final = '/BASE/api'

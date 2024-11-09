@@ -5,7 +5,7 @@ from fastapi.exceptions import RequestValidationError
 from core.base import BaseResponse
 
 
-def init_listeners(app: FastAPI) -> None:
+def init_response_parser(app: FastAPI) -> None:
     async def http_exception_handler(request, exc: HTTPException):
         response = {
             'status_code': exc.status_code,

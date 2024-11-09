@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
-from .hello.v1 import sub_router
+from .HelloWorld import v1_HelloWorld
 
 router = APIRouter()
 
+router.include_router(v1_HelloWorld)
 
-router.include_router(sub_router)
 
 __all__ = ["router"]

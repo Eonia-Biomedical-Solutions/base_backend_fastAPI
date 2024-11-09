@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 def init_cors(app: FastAPI) -> None:
+
     app.add_middleware(
         CORSMiddleware,  # noqa
         allow_origins=["*"],
@@ -10,3 +11,4 @@ def init_cors(app: FastAPI) -> None:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+

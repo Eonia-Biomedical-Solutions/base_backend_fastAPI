@@ -1,16 +1,9 @@
 from fastapi import APIRouter
+
 from .request import SayNameRequest
 from .response import SayNameResponse
 
 hello_world_router = APIRouter()
-
-
-@hello_world_router.get('/')
-async def helloworld():
-
-    response = 'Hello World!'
-
-    return response
 
 
 @hello_world_router.post('/my_name')

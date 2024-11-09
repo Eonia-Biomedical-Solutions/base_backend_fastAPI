@@ -1,7 +1,7 @@
 import uuid
 from sqlalchemy import (Column, String)
 
-from core.db.definitions import SQLModel
+from core.db.definitions.base import SQLModel
 
 
 class BaseTable(SQLModel):

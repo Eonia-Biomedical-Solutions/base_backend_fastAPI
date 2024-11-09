@@ -5,6 +5,6 @@ from core.base import BaseSchema
 
 class EmailSchema(BaseSchema):
     email: EmailStr
-    asunto: str
-    tarea: str
-    token: str
+    subject: str
+    content: str
+    

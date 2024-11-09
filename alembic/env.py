@@ -1,13 +1,12 @@
 import os
-import dotenv
 from alembic import context
 from sqlalchemy import pool
 from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 
 from core.db import Base
-from models import *
-
+from db_models import *
+from core.settings import settings
 
 config = context.config
 
@@ -16,9 +15,18 @@ if config.config_file_name is not None:
 
 target_metadata = Base.metadata
 
-DOTENV = os.path.join('core', '.env')
-dotenv.load_dotenv(DOTENV)
-config.set_main_option('sqlalchemy.url', os.getenv("DB_URL"))
+db_driver = settings.DB_DRIVER
+
+_db_url = (
+    f"{db_driver}:///{settings.DB_NAME}"
+    if db_driver == "sqlite"
+    else f"{settings.DB_DRIVER}://{settings.DB_USR}:{settings.DB_PWD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}"
+)
+
+config.set_main_option(
+    'sqlalchemy.url',
+    _db_url
+)
 
 
 def run_migrations_offline() -> None:

@@ -1,16 +1,9 @@
-
 from typing import (
     Any,
     Dict,
     List,
 )
-
 from sqlalchemy.orm import DeclarativeBase
-
-
-__all__ = [
-    'SQLModel'
-]
 
 
 class SQLModel(DeclarativeBase):

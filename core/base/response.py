@@ -18,3 +18,4 @@ class BaseResponse(JSONResponse):
         content = ResponseStructure(status_code=status_code, errors=errors, data=jsonable_encoder(content),
                                     messages=messages).dict()
         super().__init__(content, status_code, *args, **kwargs)
+
