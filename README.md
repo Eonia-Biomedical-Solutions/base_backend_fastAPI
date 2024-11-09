@@ -7,7 +7,7 @@
 First, clone the repository using the command below:
 
 ```bash
-git clone https://azure.devops.safran/SafranEngineeringServices/Innovation%20Team/_git/BaseBackend <YOUR PROJECT>
+git clone https://github.com/Eonia-Biomedical-Solutions/base_backend_fastAPI <YOUR PROJECT>
 ```
 
 ### Change Git Remote Origin
